@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>너도미사</title>
+    <style>
+        header {
+            background-color: green;
+            color: white;
+        }
+        main {
+            padding: 60px;
+            min-height: 1000px;
+        }
+        footer {
+            background-color: green;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">너도미사</div>
+
+    <nav class="menu1" style="display: flex; gap: 20px;">
+        <a href="/layout/home" style="color: white;">홈</a>
+        <div th:each="board : ${boardV3DTOs}" style="display: flex; flex-direction: column;">
+            <a th:href="@{'/layout/' + ${board.boardId}}"
+               th:text="${board.name}"
+               style="color: white; text-decoration: none; font-weight: 500;"></a>
+        </div>
+    </nav>
+</header>
+
+
+<main id="page-content">
+    <table class="centered">
+        <tr>
+            <th>게시판ID</th>
+            <th>제목</th>
+            <th>내용</th>
+            <th>작성자</th>
+        </tr>
+        <tr th:each="post : ${postV3DTOs}">
+            <td th:text="${post.postId}"></td>
+            <td th:text="${post.title}"></td>
+            <td th:text="${post.content}"></td>
+            <td th:text="${post.authorId}"></td>
+
+        </tr>
+
+        </tr>
+    </table>
+    <table class="centered">
+        <tr>
+            <th>댓글ID</th>
+            <th>글ID</th>
+            <th>작성자</th>
+            <th>내용</th>
+        </tr>
+        <tr th:each="comment : ${commentV3DTOs}">
+            <td th:text="${comment.commentId}"></td>
+            <td th:text="${comment.postId}"></td>
+            <td th:text="${comment.authorId}"></td>
+            <td th:text="${comment.content}"></td>
+        </tr>
+
+    </table>
+</main>
+
+<footer id="page-footer">
+    <p>&copy; 2025 JeongHoon Corp. 모든 권리 보유.</p>
+</footer>
+
+</body>
+
+</html>

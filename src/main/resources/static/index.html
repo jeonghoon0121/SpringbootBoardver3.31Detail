@@ -64,20 +64,82 @@
 <br>
   <button onclick="location.href='/boardv3/add'">글쓰기</button>
   <button onclick="location.href='/boardv3/add/1'">1번게시판 글쓰기</button>
-  <button onclick="location.href='/boardv3/add2'">댓글쓰기</button>
-  <button onclick="location.href='/boardv3/add2/1'">1번글 댓글쓰기</button>
   <br>
   <button onclick="location.href='/boardv3/update'">글수정</button>
   <button onclick="location.href='/boardv3/update/1'">1번게시판 글수정</button>
-  <button onclick="location.href='/boardv3/update2'">댓글수정</button>
-  <button onclick="location.href='/boardv3/update2/1'">1번글 댓글수정</button>
   <br>
   <button onclick="location.href='/boardv3/delete'">글삭제</button>
   <button onclick="location.href='/boardv3/delete/1'">1번게시판 글삭제</button>
-  <button onclick="location.href='/boardv3/delete2'">댓글삭제</button>
-  <button onclick="location.href='/boardv3/delete2/1'">1번글 댓글삭제</button>
+  <br>
+  <h1>레이아웃</h1>
+  <button onclick="location.href='/layout/home'">레이아웃홈</button>
+  <button onclick="location.href='/layout/1'">1번게시판</button>
+  <button onclick="location.href='/layout/2'">2게시판</button>
+  <button onclick="location.href='/layout/3'">3번게시판</button>
+  <button onclick="location.href='/layout/4'">4번게시판</button>
+  <button onclick="location.href='/layout/5'">5번게시판</button>
+  <button onclick="location.href='/layout/6'">5번게시판</button>
+  <br>
+  <button onclick="location.href='/layout/post/1'">1번글</button>
+  <button onclick="location.href='/layout/post/2'">2번글</button>
+  <button onclick="location.href='/layout/post/3'">3번글</button>
+  <button onclick="location.href='/layout/post/4'">4번글</button>
+  <button onclick="location.href='/layout/post/5'">5번글</button>
+  <button onclick="location.href='/layout/post/6'">6번글</button>
+  <button onclick="location.href='/layout/post/7'">7번글</button>
+  <button onclick="location.href='/layout/post/8'">8번글</button>
+  <button onclick="location.href='/layout/post/9'">9번글</button>
+  <button onclick="location.href='/layout/post/10'">10번글</button>
+  <br>
+  <button onclick="location.href='/layout/post/add/1'">1번게시판글쓰기</button>
+  <button onclick="location.href='/layout/post/add/2'">2번게시판글쓰기</button>
+  <button onclick="location.href='/layout/post/add/3'">3번게시판글쓰기</button>
+  <button onclick="location.href='/layout/post/add/4'">4번게시판글쓰기</button>
+  <button onclick="location.href='/layout/post/add/5'">5번게시판글쓰기</button>
+  <button onclick="location.href='/layout/post/add/6'">6번게시판글쓰기</button>
+  <br>
+  <select id="updatePost">
+      <option value="">-- 번호 선택 --</option>
+      <script>
+          /*1부터 300까지 숫자*/
+          for (let i = 1; i <= 300; i++) {
+              document.write(`<option value="${i}">게시물 ${i}</option>`);
+          }
+      </script>
+  </select>
+  <button onclick="goToUpdateForm()">이동</button>
+  <script>
+      function goToUpdateForm() {
+          const selectedId = document.getElementById('updatePost').value;
+          if (selectedId) {
+              location.href = `/layout/post/update/${selectedId}`;
+          } else {
+              alert("게시물 번호를 선택해주세요.");
+          }
+      }
+  </script>
+  <br>
+  <select id="deletePost">
+      <option value="">-- 번호 선택 --</option>
+      <script>
+          /*1부터 300까지 숫자*/
+          for (let i = 1; i <= 300; i++) {
+              document.write(`<option value="${i}">게시물 ${i}</option>`);
+          }
+      </script>
+  </select>
+  <button onclick="goToDeleteForm()">이동</button>
+  <script>
+      function goToDeleteForm() {
+          const selectedId = document.getElementById('deletePost').value;
+          if (selectedId) {
+              location.href = `/layout/post/delete/${selectedId}`;
+          } else {
+              alert("게시물 번호를 선택해주세요.");
+          }
+      }
+  </script>
   <h1>USER</h1>
-
   <h1>ADMIN</h1>
 
 

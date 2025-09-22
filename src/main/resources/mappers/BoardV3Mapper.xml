@@ -69,7 +69,71 @@
     FROM comment_v3
     ORDER by comment_id
     </select>
+    <insert id="addNewPost" parameterType="com.ohgiraffers.request.boardver3.PostV3DTO">
+        INSERT INTO post_v3
+        (
+        board_id,
+        author_id,
+        password,
+        title,
+        content,
+        view_count,
+        ip_hash,
+        created_at,
+        updated_at
+        )
+        VALUES
+        (
+        #{ boardId }
+        ,#{ authorId }
+        ,#{ password }
+        ,#{ title }
+        ,#{ content }
+        ,#{ viewCount }
+        ,#{ ipHash }
+        ,#{ createdAt }
+        ,#{ updatedAt }
+        )
+    </insert>
+    <insert id="addNewComment" parameterType="com.ohgiraffers.request.boardver3.CommentV3DTO">
+        INSERT INTO comment_v3
+        (
+        post_id,
+        author_id,
+        password,
+        content,
+        ip_hash,
+        created_at,
+        updated_at
+        )
+        VALUES
+        (
+        #{ postId }
+        ,#{ authorId }
+        ,#{ password }
+        ,#{ content }
+        ,#{ ipHash }
+        ,#{ createdAt }
+        ,#{ updatedAt }
+        )
+    </insert>
+    <update id="updatePost" parameterType="com.ohgiraffers.request.boardver3.PostV3DTO">
+        UPDATE post_v3
+        SET title= #{ title },
+        content= #{ content },
+        updated_at= #{ updatedAt }
+        WHERE post_id= #{ postId }
+        AND author_id= #{ authorId }
+        AND password= #{ password }
+    </update>
 
+    <delete id="deletePost" parameterType="com.ohgiraffers.request.boardver3.PostV3DTO">
+        DELETE FROM post_v3
+        WHERE post_id= #{ postId }
+        AND author_id= #{ authorId }
+        AND password= #{ password }
+
+    </delete>
 
 
 </mapper>
